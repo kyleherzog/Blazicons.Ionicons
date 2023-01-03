@@ -3,6 +3,8 @@ Provides the Ionicons icon library packaged as [Blazicons](https://github.com/ky
 
 Check out the [Demo Site](http://blazicons.com).
 
+![Nuget](https://img.shields.io/nuget/v/Blazicons.Ionicons)
+
 [![Build Status](https://dev.azure.com/kyleherzog/Blazicons/_apis/build/status/Blazicons.Ionicons?branchName=main)](https://dev.azure.com/kyleherzog/Blazicons/_build/latest?definitionId=21&branchName=main)
 
 ## Getting Started
