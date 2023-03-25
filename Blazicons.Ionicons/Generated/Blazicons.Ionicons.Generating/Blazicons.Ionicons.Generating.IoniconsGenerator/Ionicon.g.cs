@@ -1218,6 +1218,18 @@ public static SvgIcon ChevronBackSharp => SvgIcon.FromContent("<polyline points=
 /// </summary>
 public static SvgIcon ChevronBack => SvgIcon.FromContent("<polyline points=\"328 112 184 256 328 400\" style=\"fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px\"/>", "0 0 512 512");
 /// <summary>
+/// Gets the ChevronCollapseOutline SvgIcon from the Ionicon library.
+/// </summary>
+public static SvgIcon ChevronCollapseOutline => SvgIcon.FromContent("<path d=\"M136 104L256 208L376 104\"  stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M136 408L256 304L376 408\"  stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/>", "0 0 512 512");
+/// <summary>
+/// Gets the ChevronCollapseSharp SvgIcon from the Ionicon library.
+/// </summary>
+public static SvgIcon ChevronCollapseSharp => SvgIcon.FromContent("<path d=\"M102.145 108.514L256 241.855l153.855-133.341-31.437-36.273L256 178.337 133.582 72.241l-31.437 36.273zm0 294.972L256 270.145l153.855 133.341-31.437 36.273L256 333.663 133.582 439.759l-31.437-36.273z\"/>", "0 0 512 512");
+/// <summary>
+/// Gets the ChevronCollapse SvgIcon from the Ionicon library.
+/// </summary>
+public static SvgIcon ChevronCollapse => SvgIcon.FromContent("<path d=\"M117.863 88.282c-8.681 10.017-7.598 25.174 2.419 33.855l120 104c9.02 7.818 22.416 7.818 31.436 0l120-104c10.017-8.681 11.1-23.838 2.419-33.855s-23.839-11.099-33.855-2.418L256 176.241 151.718 85.864c-10.016-8.681-25.174-7.598-33.855 2.418zm0 335.436c-8.681-10.017-7.598-25.174 2.419-33.855l120-104c9.02-7.818 22.416-7.818 31.436 0l120 104c10.017 8.681 11.1 23.838 2.419 33.855s-23.839 11.099-33.855 2.418L256 335.759l-104.282 90.377c-10.016 8.681-25.174 7.598-33.855-2.418z\"/>", "0 0 512 512");
+/// <summary>
 /// Gets the ChevronDownCircleOutline SvgIcon from the Ionicon library.
 /// </summary>
 public static SvgIcon ChevronDownCircleOutline => SvgIcon.FromContent("<path d=\"M256,64C150,64,64,150,64,256s86,192,192,192,192-86,192-192S362,64,256,64Z\" style=\"fill:none;stroke:currentColor;stroke-miterlimit:10;stroke-width:32px\"/><polyline points=\"352 216 256 312 160 216\" style=\"fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px\"/>", "0 0 512 512");
@@ -1241,6 +1253,18 @@ public static SvgIcon ChevronDownSharp => SvgIcon.FromContent("<polyline points=
 /// Gets the ChevronDown SvgIcon from the Ionicon library.
 /// </summary>
 public static SvgIcon ChevronDown => SvgIcon.FromContent("<polyline points=\"112 184 256 328 400 184\" style=\"fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px\"/>", "0 0 512 512");
+/// <summary>
+/// Gets the ChevronExpandOutline SvgIcon from the Ionicon library.
+/// </summary>
+public static SvgIcon ChevronExpandOutline => SvgIcon.FromContent("<path d=\"M136 208L256 104L376 208\" stroke=\"currentColor\"  stroke-width=\"32\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M136 304L256 408L376 304\" stroke=\"currentColor\"  stroke-width=\"32\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "0 0 512 512");
+/// <summary>
+/// Gets the ChevronExpandSharp SvgIcon from the Ionicon library.
+/// </summary>
+public static SvgIcon ChevronExpandSharp => SvgIcon.FromContent("<path d=\"M136 208L256 104L376 208\"  stroke=\"currentColor\" stroke-width=\"48\" stroke-linecap=\"square\"/><path d=\"M136 304L256 408L376 304\"  stroke=\"currentColor\" stroke-width=\"48\" stroke-linecap=\"square\"/>", "0 0 512 512");
+/// <summary>
+/// Gets the ChevronExpand SvgIcon from the Ionicon library.
+/// </summary>
+public static SvgIcon ChevronExpand => SvgIcon.FromContent("<path d=\"M136 208L256 104L376 208\"  stroke=\"currentColor\" stroke-width=\"48\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M136 304L256 408L376 304\"  stroke=\"currentColor\" stroke-width=\"48\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "0 0 512 512");
 /// <summary>
 /// Gets the ChevronForwardCircleOutline SvgIcon from the Ionicon library.
 /// </summary>
