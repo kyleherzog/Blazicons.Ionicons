@@ -1,6 +1,9 @@
 # Changelog
 These are the list of changes to each version that has been released.
 
+## 3.0
+- [x] Updated Ionicons to v8.0.8
+
 ## 2.2
 - [x] Updated Blazicons to v2.1.30
 
