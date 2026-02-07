@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>13.0</LangVersion>
+    <TargetFrameworks>net6.0;net8.0;net10.0</TargetFrameworks>
+    <LangVersion>14.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ApplicationVersion>3.1</ApplicationVersion>
+    <ApplicationVersion>4.0</ApplicationVersion>
     <ApplicationRevision>0</ApplicationRevision>
-    <Version>3.1</Version>
+    <Version>4.0</Version>
     <IsTrimmable>true</IsTrimmable>
     <Authors>Kyle Herzog</Authors>
     <PackageTags>Blazor Ionic Ionicon Icons SVG</PackageTags>
@@ -19,13 +19,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageIcon>blazicons-md-128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-    <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- Exclude the output of source generators from the compilation -->
-    <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
-  </ItemGroup>
+  <PropertyGroup>
+    <GeneratedCodeOutputPath>Generated</GeneratedCodeOutputPath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -37,15 +34,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Blazicons" Version="2.2.39" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -53,7 +46,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.12.0.118525">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.19.0.132793">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -63,9 +56,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Blazicons.Ionicons.Generating\Blazicons.Ionicons.Generating.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-  <ItemGroup>
     <None Update="blazicons-md-128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -73,5 +63,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Generated\" />
+    <Folder Include="Generated\Blazicons.Ionicons.Generating\Blazicons.Ionicons.Generating.IoniconsGenerator\" />
   </ItemGroup>
+
+  <!-- Run the code generator before compilation, but only once when multi-targeting -->
+  <Target Name="GenerateIonicons" BeforeTargets="BeforeBuild" Condition="'$(TargetFramework)' == $([System.String]::Copy('$(TargetFrameworks)').Split(';')[0]) OR '$(TargetFramework)' == ''">
+    <PropertyGroup>
+      <GeneratedOutputDir>$([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '$(GeneratedCodeOutputPath)'))</GeneratedOutputDir>
+      <GeneratorProjectPath>$([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '..', 'Blazicons.Ionicons.Generating.Console', 'Blazicons.Ionicons.Generating.Console.csproj'))</GeneratorProjectPath>
+    </PropertyGroup>
+
+    <Message Text="Running Ionicons generator..." Importance="high" />
+
+    <Exec Command="dotnet run --project &quot;$(GeneratorProjectPath)&quot; --configuration $(Configuration) -- &quot;$(GeneratedOutputDir)&quot;" />
+
+    <Message Text="Ionicons generation completed." Importance="high" />
+  </Target>
 </Project>
