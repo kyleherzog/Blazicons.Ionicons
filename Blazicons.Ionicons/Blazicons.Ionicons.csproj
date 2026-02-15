@@ -32,9 +32,6 @@
     <BlaziconsGeneratorPath>Blazicons.Ionicons.Generating/Blazicons.Ionicons.Generating.IoniconsGenerator</BlaziconsGeneratorPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md">
       <Pack>True</Pack>
