@@ -5,7 +5,7 @@ Check out the [Demo Site](http://blazicons.com).
 
 ![Nuget](https://img.shields.io/nuget/v/Blazicons.Ionicons)
 
-[![Build Status](https://dev.azure.com/kyleherzog/Blazicons/_apis/build/status/Blazicons.Ionicons?branchName=main)](https://dev.azure.com/kyleherzog/Blazicons/_build/latest?definitionId=21&branchName=main)
+[![Build Status](https://dev.azure.com/kyleherzog/Blazicons/_apis/build/status%2FBlazicons.Ionicons?branchName=main)](https://dev.azure.com/kyleherzog/Blazicons/_build/latest?definitionId=36&branchName=main)
 
 ## Getting Started
 To get started using the Ionicon Blazicons, just install the Blazicons.Ionicons NuGet package.
