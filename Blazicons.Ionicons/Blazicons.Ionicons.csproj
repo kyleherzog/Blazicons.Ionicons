@@ -20,9 +20,18 @@
     <PackageIcon>blazicons-md-128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <!-- Blazicons code generation configuration -->
   <PropertyGroup>
-    <GeneratedCodeOutputPath>Generated</GeneratedCodeOutputPath>
+    <BlaziconsRepoUrl>https://github.com/ionic-team/ionicons/archive/refs/heads/main.zip</BlaziconsRepoUrl>
+    <BlaziconsSvgPattern>^src\/svg\/.*.svg$</BlaziconsSvgPattern>
+    <BlaziconsClassName>Ionicon</BlaziconsClassName>
+    <BlaziconsSvgFolderPath>src/svg</BlaziconsSvgFolderPath>
+    <BlaziconsGeneratedCodeOutputPath>Generated</BlaziconsGeneratedCodeOutputPath>
+    <!-- Use old path structure for verification -->
+    <BlaziconsGeneratorPath>Blazicons.Ionicons.Generating/Blazicons.Ionicons.Generating.IoniconsGenerator</BlaziconsGeneratorPath>
   </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -33,12 +42,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Blazicons" Version="2.2.39" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
+    <PackageReference Include="Blazicons" Version="3.0.12" />
+    <PackageReference Include="Blazicons.Generating" Version="3.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102">
+
+    <!-- Reference the Blazicons.Generating package (or use ProjectReference for local development) -->
+
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.103">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -56,7 +72,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Update="blazicons-md-128.png">
+    <None Include="blazicons-md-128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
@@ -66,17 +82,9 @@
     <Folder Include="Generated\Blazicons.Ionicons.Generating\Blazicons.Ionicons.Generating.IoniconsGenerator\" />
   </ItemGroup>
 
-  <!-- Run the code generator before compilation, but only once when multi-targeting -->
-  <Target Name="GenerateIonicons" BeforeTargets="BeforeBuild" Condition="'$(TargetFramework)' == $([System.String]::Copy('$(TargetFrameworks)').Split(';')[0]) OR '$(TargetFramework)' == ''">
-    <PropertyGroup>
-      <GeneratedOutputDir>$([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '$(GeneratedCodeOutputPath)'))</GeneratedOutputDir>
-      <GeneratorProjectPath>$([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '..', 'Blazicons.Ionicons.Generating.Console', 'Blazicons.Ionicons.Generating.Console.csproj'))</GeneratorProjectPath>
-    </PropertyGroup>
+  <!-- Import the Blazicons.Generating targets for local development -->
+  <!-- When using the NuGet package, these are imported automatically -->
+  <Import Project="..\..\Blazicons.Generating\build\Blazicons.Generating.props" />
+  <Import Project="..\..\Blazicons.Generating\build\Blazicons.Generating.targets" />
 
-    <Message Text="Running Ionicons generator..." Importance="high" />
-
-    <Exec Command="dotnet run --project &quot;$(GeneratorProjectPath)&quot; --configuration $(Configuration) -- &quot;$(GeneratedOutputDir)&quot;" />
-
-    <Message Text="Ionicons generation completed." Importance="high" />
-  </Target>
 </Project>
