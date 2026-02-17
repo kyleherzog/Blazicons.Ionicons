@@ -79,9 +79,4 @@
     <Folder Include="Generated\Blazicons.Ionicons.Generating\Blazicons.Ionicons.Generating.IoniconsGenerator\" />
   </ItemGroup>
 
-  <!-- Import the Blazicons.Generating targets for local development -->
-  <!-- When using the NuGet package, these are imported automatically -->
-  <Import Project="..\..\Blazicons.Generating\build\Blazicons.Generating.props" />
-  <Import Project="..\..\Blazicons.Generating\build\Blazicons.Generating.targets" />
-
 </Project>
